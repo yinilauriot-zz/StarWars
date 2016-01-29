@@ -9,8 +9,8 @@
 <body>
     <div class="wrapper">
         <header id="header" role="banner" class="line txtcenter">
-            <h1 class="h1-like">Star Wars</h1>
-            <nav id="navigation" role="navigation">
+            <h1 class="h1-like fl"><img src="assets/img/logo.jpg" alt="Star Wars Logo"></h1>
+            <nav id="navigation" role="navigation" class="wrapper">
                 <ul>
                     <li class="inbl"><a class="pas no-underline {{Request::is('/') ? 'current' : ''}}" href="{{url('/')}}">{{trans('app.public')}}</a></li>
                     @if (Auth::check())

@@ -26,18 +26,20 @@ body {
 }
 
 #header {
-  margin: 50px 0;
+  display: inline-block;
+  margin-bottom: 30px;
 }
 
 h1 {
   font-weight: bold;
-  margin-bottom: 30px;
+  padding-top: 50px;
+  padding-left: 30px;
 }
 
 #navigation {
-  margin: 50px 0 30px;
+  margin-top: 100px;
   li {
-    margin: 0 20px;
+    margin: 0 10px;
     a:hover,
     a:focus {
       background-color: $black-background;

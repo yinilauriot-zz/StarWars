@@ -1,4 +1,4 @@
-<nav id="navigation" role="navigation">
+<nav id="navigation" role="navigation" class="wrapper">
     <ul>
         <li class="inbl"><a class="pas no-underline {{Request::is('/') ? 'current' : ''}}" href="{{url('/')}}">{{trans('app.home')}}</a></li>
         @forelse ($categories as $id => $title)

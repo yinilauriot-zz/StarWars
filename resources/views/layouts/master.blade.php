@@ -9,16 +9,15 @@
         <link rel="stylesheet" href="{{url('assets/css/font-awesome.min.css')}}">
     </head>
     <body>
-        <div class="wrapper">
-            <header id="header" role="banner" class="line txtcenter">
-                <h1 class="h1-like">Star Wars</h1>
-                @include('partials.nav')
-            </header>
+        <header id="header" role="banner" class="line txtcenter clearfix">
+            <h1 class="h1-like fl"><img src="assets/img/logo.jpg" alt="Star Wars Logo"></h1>
+            @include('partials.nav')
+        </header>
 
+        <div class="wrapper">
             <div id="main" role="main" class="line w960p">
                 @yield('content')
             </div>
-
             <footer id="footer" role="contentinfo" class="line txtcenter">
                 <nav id="navigation" class="line">
                     <ul class="">

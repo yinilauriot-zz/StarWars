@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>6d21d048-2a7a-4aba-bce5-d82bfa307015</OriginalElement>
+  <nodes>
+    <node x="751.75" y="256.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.tags</node>
+    <node x="573.0" y="763.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.migrations</node>
+    <node x="692.0" y="567.5">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.product_tag</node>
+    <node x="420.0" y="0.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.categories</node>
+    <node x="68.0" y="490.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.histories</node>
+    <node x="337.0" y="763.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.password_resets</node>
+    <node x="370.0" y="190.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.products</node>
+    <node x="0.0" y="212.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.customers</node>
+    <node x="400.0" y="512.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.pictures</node>
+    <node x="0.0" y="763.0">6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.users</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.products" target="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.categories">
+      <point x="2.8421709430404007E-14" y="-125.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.product_tag" target="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.tags">
+      <point x="55.25" y="-36.5" />
+      <point x="0.0" y="59.0" />
+    </edge>
+    <edge source="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.histories" target="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.products">
+      <point x="78.0" y="-114.0" />
+      <point x="302.0" y="465.0" />
+      <point x="425.3333333333333" y="465.0" />
+      <point x="-110.66666666666667" y="125.0" />
+    </edge>
+    <edge source="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.pictures" target="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.products">
+      <point x="0.0" y="-92.0" />
+      <point x="0.0" y="125.0" />
+    </edge>
+    <edge source="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.histories" target="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.customers">
+      <point x="-78.0" y="-114.0" />
+      <point x="0.0" y="103.0" />
+    </edge>
+    <edge source="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.product_tag" target="6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.products">
+      <point x="-55.25" y="-36.5" />
+      <point x="747.25" y="465.0" />
+      <point x="646.6666666666666" y="465.0" />
+      <point x="110.66666666666666" y="125.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8378896882494007" x="376.9937034916999" y="484.55294791070395" />
+  <SelectedNodes>
+    <node>6d21d048-2a7a-4aba-bce5-d82bfa307015.TABLE:db_starwars.pictures</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

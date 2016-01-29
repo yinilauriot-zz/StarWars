@@ -1,0 +1,279 @@
+@import "modules/reset";
+@import "modules/mixin";
+
+$black-background: #000000;
+$white-text: #FFFFFF;
+$border: 1px solid #000000;
+
+/************** My Style *************/
+body {
+  font-family: arial, sans-serif;
+}
+
+.no-underline {
+  text-decoration: none;
+}
+
+.current {
+  background-color: $black-background;
+  color: $white-text;
+  @include border-radius(5px);
+}
+
+.wrapper {
+  width: 1232px;
+  margin: 0 auto;
+}
+
+#header {
+  margin: 50px 0;
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#navigation {
+  margin: 50px 0 30px;
+  li {
+    margin: 0 20px;
+    a:hover,
+    a:focus {
+      background-color: $black-background;
+      color: $white-text;
+      @include border-radius(5px);
+    }
+  }
+}
+
+.logo-cart {
+  font-size: 1.5rem;
+  span {
+    font-size: 0.95rem;
+    width: 18px;
+    height: 18px;
+    border: $border;
+    @include border-radius(50%);
+    position: relative;
+    right: 5px;
+
+  }
+}
+
+#main {
+  margin: 0 auto;
+  position: relative;
+}
+
+.product {
+  margin: 50px 0;
+}
+
+.name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 0.95rem;
+}
+
+.pagination {
+  margin: 20px 0;
+  text-align: center;
+  li {
+    display: inline;
+    padding: 10px;
+  }
+}
+
+#loader {
+  display: none;
+  position: absolute;
+  left: 50%;
+}
+
+select {
+  margin: 20px;
+  padding: 0 10px;
+}
+
+.contact {
+  margin-bottom: 40px;
+}
+
+.alert {
+  margin: 100px;
+}
+
+.success {
+  color: #008000;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.fail {
+  color: #ff0000;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.alert h6 {
+  margin-bottom: 30px;
+}
+
+.alert p {
+  font-size: 1.5rem;
+}
+
+.form-text {
+  margin: 30px 0;
+}
+
+input, textarea, select {
+  border: $border;
+  @include border-radius(3px);
+  outline: none;
+  padding: 0 5px;
+}
+
+select {
+  padding: 0;
+}
+
+.error {
+  color: #ff0000;
+}
+
+.button {
+  margin-top: 15px;
+  line-height: 1.5;
+  padding: 0 15px;
+  background-color: #FFFFFF;
+  border: $border;
+  @include border-radius(3px);
+}
+
+.button:hover,
+.button:focus {
+  background-color: $black-background;
+  color: $white-text;
+}
+
+
+.btn-closed {
+  background-color: $black-background;
+  color: $white-text;
+}
+
+button {
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #c0c0c0;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+}
+
+.file {
+  background-color: none;
+  border: none;
+  @include border-radius(0);
+  outline: none;
+  padding: 0;
+}
+
+#opened, #closed {
+  margin-left: 10px;
+}
+
+.edit-image {
+  margin-left: 148px;
+}
+
+.cart {
+  margin-bottom: 20px;
+}
+
+.cart-name {
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.btn-cart {
+  font-size: 1.2rem;
+  position: relative;
+  left: 140px;
+}
+
+.btn-cart:hover,
+.btn-cart:focus {
+  color: #ff0000;
+}
+
+.total {
+  position: relative;
+  margin: 30px 0;
+}
+
+.total p {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.total span {
+  color: #ff0000;
+}
+
+.validate {
+  font-size: 1.25rem;
+  display: block;
+  position: absolute;
+  right: 0;
+}
+
+.confirm {
+  font-size: 1.25rem;
+}
+
+.btn-cancel {
+  margin-left: 30px;
+}
+
+.area {
+  h5 {
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 1rem;
+    span {
+      margin-left: 30px;
+    }
+  }
+}
+
+.best {
+  margin-top: 120px;
+  font-weight: bold;
+}
+
+.best-prod {
+  margin-top: 20px;
+  width: 25%
+}

@@ -227,12 +227,13 @@ class FrontController extends Controller
 
     public function confirmCart()
     {
+        $command_id = History::all()->max('command_id');
+        $command_id++;
+        //dd($command_id);
+
         if(Session::has('cart')) {
             $cart = Session::get('cart');
             //dd($cart);
-            $command_id = History::all()->max('command_id');
-            $command_id++;
-            //dd($command_id);
             foreach($cart as $id => $quantity) {
                 $product = Product::find($id);
 
@@ -260,36 +261,13 @@ class FrontController extends Controller
         $customer = Customer::find(Auth::user()->id);
         $customer->increment('number_command');
 
-        $title = "Payment";
-        return view('front.payment', compact('command_id', 'title'));
+        return redirect('/')->with([
+            'message' => trans('app.finishSuccess'),
+            'alert'   => 'success'
+        ]);
 
     }
 
-    public function payment(Request $request)
-    {
-        $name = Auth::user()->name;
-        $cardNumber = Auth::user()->customer->number_card;
-        //dd($cardNumber);
-        if($request->name == $name && $request->cardNumber == $cardNumber) {
-            $customer_id = Auth::user()->id;
-            $command_id = $request->command_id;
-
-            History::where('customer_id', $customer_id)
-                    ->where('command_id', $command_id)
-                    ->update(['status' => 'finalized']);
-
-            return redirect('/')->with([
-                'message' => trans('app.finishSuccess'),
-                'alert'   => 'success'
-            ]);
-
-        } else {
-            return back()->with([
-                'messageFail' => trans('app.finishFail'),
-                'alert'   => 'fail'
-            ]);
-        }
-    }
 
 
     /*

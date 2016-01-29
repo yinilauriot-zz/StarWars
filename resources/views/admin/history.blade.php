@@ -16,7 +16,7 @@
                 <td>{{$history->command_id}}</td>
                 <td>{{$history->command_at}}</td>
                 <td>{{$history->customer->user->name}}</td>
-                <td><a href="{{url('product', $history->product->id)}}">{{$history->product->name}}</a></td>
+                <td><a href="{{url('prod', [$history->product->id, $history->product->slug])}}">{{$history->product->name}}</a></td>
                 <td>{{$history->price}}</td>
                 <td>{{$history->status}}</td>
             </tr>

@@ -53,6 +53,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('validateCart', 'FrontController@validateCart');
         Route::get('confirmCart', 'FrontController@confirmCart');
-        Route::post('payment', 'FrontController@payment');
     });
 });

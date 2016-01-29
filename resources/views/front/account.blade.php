@@ -12,7 +12,7 @@
     <p>{{trans('app.address')}}
         <span>{{$customer->address}}</span>
     </p>
-    <p>{{trans('app.cartNumber')}}
+    <p>{{trans('app.cardNumber')}}
         <span>{{$customer->number_card}}</span>
     </p>
 </div>
@@ -31,8 +31,8 @@
             <tr>
                 <td>{{$history->command_id}}</td>
                 <td>{{$history->command_at}}</td>
-                <td><a href="{{url('product', $history->product->id)}}">{{$history->product->name}}</a></td>
-                <td>{{$history->price}}</td>
+                <td><a href="{{url('prod', [$history->product->id, $history->product->slug])}}">{{$history->product->name}}</a></td>
+                <td>{{$history->price}} €</td>
                 <td>{{$history->status}}</td>
             </tr>
         @empty

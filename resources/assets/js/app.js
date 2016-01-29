@@ -70,8 +70,8 @@ $(document).ready(function() {
                  success: function(json)
                  {
                     //console.log(json['total']);
-                     $('.total_price'+product_id).text(json.price);
-                     $('#total').text(json.total);
+                     $('.total_price'+product_id).text(json.price+' €');
+                     $('#total').text(json.total+' €');
                  }
              });
         });

@@ -15,3 +15,5 @@ EOF
 )
 
 echo $MySQL | mysql --user=$USERNAME --password=$PASSWORD
+
+mysql -u $USERNAME -p $PASSWORD $DBNAME < db_starwars.sql

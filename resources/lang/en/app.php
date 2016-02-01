@@ -59,5 +59,10 @@
      'public'          => 'Public site',
      'pay'             => 'Pay',
      'payment'         => 'Payment',
-     'finishFail'      => 'Sorry, your payment is failed. Please try again !'
+     'finishFail'      => 'Sorry, your payment is failed. Please try again !',
+     'register'        => 'Register',
+     'confirmPassword' => 'Confirm your passwoord: ',
+     'registerSuccess' => 'Thanks for your registration',
+     'registerCustomer'=> 'Delivery and payment information',
+     'customerSuccess' => 'Your information is well saved',
  ];

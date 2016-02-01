@@ -12,7 +12,6 @@ class AlterPicturesTable extends Migration
      */
     public function up()
     {
-        // modifier le structure de la table
         Schema::table('pictures', function (Blueprint $table) {
             $table->enum('type', ['png', 'jpg', 'gif'])->after('size');
         });
@@ -26,7 +25,7 @@ class AlterPicturesTable extends Migration
     public function down()
     {
         Schema::table('pictures', function (Blueprint $table) {
-            $table->dropColumn('type'); // supprimer la colonne type
+            $table->dropColumn('type');
         });
     }
 }

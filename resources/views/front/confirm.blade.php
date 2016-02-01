@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (Session::has('message'))
+        @include('front.partials.flash')
+    @endif
     @if(Auth::check() && !empty($carts))
         <h6 class="h6-like cart">{{trans('app.confirmCart')}}</h6>
         <table>

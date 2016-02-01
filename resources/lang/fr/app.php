@@ -59,5 +59,10 @@
      'public'          => 'Site public',
      'pay'             => 'Payer',
      'payment'         => 'Paiement',
-     'finishFail'      => 'Désolé, votre paiement est échoué. Merci de réessayer !'
+     'finishFail'      => 'Désolé, votre paiement est échoué. Merci de réessayer !',
+     'register'        => 'S\'inscrire',
+     'confirmPassword' => 'Confirmer votre mot de passe: ',
+     'registerSuccess' => 'Merci pour votre inscription',
+     'registerCustomer'=> 'Informations de Livraison et paiement',
+     'customerSuccess' => 'Vos informations sont bien sauvegardées',
  ];

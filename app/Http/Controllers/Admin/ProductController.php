@@ -20,12 +20,10 @@ class ProductController extends Controller
 
     public function __construct()
     {
-        View::composer('partials.nav', function($view) // composer(): méthode de l'objet View; injecter des données dans un template
+        View::composer('partials.nav', function($view)
         {
-            $categories = Category::lists('title', 'id');  // retourner une collection qui contient un tableau avec id et title
-            //dd($categories);
-
-            $view->with(compact('categories'));  // with(): injecter des catégories dans $view
+            $categories = Category::lists('title', 'id');
+            $view->with(compact('categories'));
         });
     }
 
@@ -54,7 +52,6 @@ class ProductController extends Controller
         $tags = Tag::lists('name','id');
 
         $title = 'Create a product';
-
         return view('admin.create', compact('categories', 'tags', 'title'));
     }
 
@@ -64,15 +61,9 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        //dd($request->all());
-
-        //dd($request->file('thumbnail'));
-
-        $product = Product::create($request->all());    // lastInsertId id du produit que l'on vient de créer
-
+        $product = Product::create($request->all());
         $product->tags()->attach($request->input('tags'));
 
-        // php.ini limite le nombre dl'octets pour une image téléchargée
         if (!is_null($request->file('thumbnail')))
             $this->upload($request, $product);
 
@@ -91,9 +82,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-
         $title = "Product {$product->name}";
-
         return view('front.prod', compact('title', 'product'));
     }
 
@@ -109,14 +98,11 @@ class ProductController extends Controller
         $tags = Tag::lists('name','id');
 
         $product = Product::find($id);
-
         $tagsProduct = $product->tags->lists('id')->toArray();
-        //dd($tagsProduct);
 
         $picture = $product->picture;
 
         $title = 'Edit a product';
-
         return view('admin.edit', compact('product', 'title', 'tags', 'categories', 'tagsProduct', 'catProduct', 'picture'));
     }
 
@@ -131,31 +117,21 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
-        //dd($product->published_at);
-
-        if (!empty($request->input('tags')))
-        {
-            /*$product->tags()->detach();
-            $product->tags()->attach($request->input('tags'));*/
-
+        if (!empty($request->input('tags'))) {
             $product->tags()->sync($request->input('tags'));
-        } else
-        {
+        } else {
             $product->tags()->detach();
         }
-
 
         if ($request->input('remove')=='true')
             $this->deleteImage($product);
 
-        // ajouter une image
         if (!is_null($request->file('thumbnail'))) {
             $this->deleteImage($product);
             $this->upload($request, $product);
         }
 
         $product->update($request->all());
-
         return redirect('product')->with([
             'message' => trans('app.updateSuccess'),
             'alert'   => 'success'
@@ -174,8 +150,7 @@ class ProductController extends Controller
         $picture = $product->picture;
 
         $this->deleteImage($product);
-
-        $product->delete();     // en cascade pour les tags N-N
+        $product->delete();
 
         if(Session::has('cart')) {
             $cart = Session::get('cart');
@@ -189,6 +164,23 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * Confirm the product remove from storage
+     *
+     * @param int $id
+     */
+    public function confirmRemove($id)
+    {
+        $product = Product::find($id);
+        $title = "Remove";
+        return view('admin.remove', compact('product', 'title'));
+    }
+
+    /**
+     * Change the product status in storage
+     *
+     * @param int $id
+     */
     public function changeStatus($id)
     {
         $product = Product::find($id);
@@ -201,15 +193,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function confirmRemove($id)
-    {
-        $product = Product::find($id);
-        $title = "Remove";
-        return view('admin.remove', compact('product', 'title'));
-    }
-
     /**
      * Upload the image of a product
+     *
      * @param Request $request
      * @param $product
      */
@@ -238,6 +224,7 @@ class ProductController extends Controller
 
     /**
      * Delete the image of a product
+     *
      * @param $product
      */
     private function deleteImage($product)

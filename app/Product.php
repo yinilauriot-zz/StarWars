@@ -24,7 +24,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category');  // ici pas d'utilisation d'alias pour App\Category car c'est une chaine de caractères
+        return $this->belongsTo('App\Category');
     }
 
     public function tags()
@@ -49,7 +49,6 @@ class Product extends Model
 
     public function getPublishedAtAttribute($value)
     {
-        //return date('d/m/Y H:m:s', strtotime($value));
         if($value=='0000-00-00 00:00:00') return 'no date';
 
         return Carbon::parse($value)->format('d/m/Y h:i:s');
@@ -73,8 +72,6 @@ class Product extends Model
     public function setPublishedAtAttribute($value)
     {
         $this->attributes['published_at'] = (empty($value)) ? '0000-00-00 00:00:00' : Carbon::now();
-
-        //$this->attributes['published_at'] = Carbon::createFromFormat('d/m/Y', 'Europe/Paris');
     }
 
     public function hasTag($tagId)

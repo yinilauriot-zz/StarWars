@@ -17,10 +17,8 @@ class LoginController extends Controller
     {
         View::composer('partials.nav', function($view) // composer(): méthode de l'objet View; injecter des données dans un template
         {
-            $categories = Category::lists('title', 'id');  // retourner une collection qui contient un tableau avec id et title
-            //dd($categories);
-
-            $view->with(compact('categories'));  // with(): injecter des catégories dans $view
+            $categories = Category::lists('title', 'id');
+            $view->with(compact('categories'));
         });
     }
 
@@ -28,12 +26,10 @@ class LoginController extends Controller
     {
         if($request->isMethod('post'))
         {
-            //dd($request->all());
-
             $this->validate($request, [
                 'email' => 'required|email',
                 'password' => 'required',
-                'remember' => 'in:true',  // in:true => le string reçu dans 'remember' doit être 'true'
+                'remember' => 'in:true',
             ]);
 
             $remember = !empty($request->input('remember')) ? true : false;

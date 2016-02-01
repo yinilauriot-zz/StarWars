@@ -25,7 +25,5 @@ class TagTableSeeder extends Seeder
                 ['name' => 'Espèce'],
             ]
         );
-
-//        factory(App\Tag::class, 15)->create();
     }
 }

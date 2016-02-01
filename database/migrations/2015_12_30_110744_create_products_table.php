@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 100);
             $table->text('abstract');
             $table->text('content');
-            $table->decimal('price',7,2);  // 7: nombre total du chiffre; 2: nombre de chiffres après la virgule
+            $table->decimal('price',7,2);
             $table->unsignedSmallInteger('quantity')->default(0);
             $table->enum('status', ['opened', 'closed'])->default('opened');
             $table->dateTime('published_at');

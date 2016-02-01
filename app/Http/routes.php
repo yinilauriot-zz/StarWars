@@ -16,12 +16,13 @@ Route::pattern('slug', '[a-z-]*');
 |
 */
 
+
 Route::get('mentions', 'FrontController@mentions');
 
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', ['as' => 'home', 'uses' => 'FrontController@index']);
-    Route::get('cat/{id}/{slug?}', 'FrontController@showProductByCategory');    //slug? => optionnel
+    Route::get('cat/{id}/{slug?}', 'FrontController@showProductByCategory');
     Route::get('tag/{id}/{slug?}', 'FrontController@showProductByTag');
     Route::get('prod/{id}/{slug?}', 'FrontController@showProduct');
 
@@ -34,11 +35,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('contact', 'FrontController@showContact');
     Route::post('storeContact', 'FrontController@storeContact');
     Route::get('account', 'FrontController@account');
+    Route::get('register', 'RegisterController@register');
+    Route::post('storeUser', 'RegisterController@storeUser');
 
-    // limit 60 requests per one minute from a single address IP, throttle
-    //                                      60: nombre de tentatives(requêtes); 1: une minute
     Route::group(['middleware' => ['throttle:60,1']], function () {
-        Route::any('login', 'LoginController@login');   // any = get and post
+        Route::any('login', 'LoginController@login');
     });
 
     Route::get('logout', 'LoginController@logout');
@@ -53,5 +54,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('validateCart', 'FrontController@validateCart');
         Route::get('confirmCart', 'FrontController@confirmCart');
+        Route::any('customer', 'RegisterController@customer');
+        Route::post('storeCustomer', 'RegisterController@storeCustomer');
     });
 });

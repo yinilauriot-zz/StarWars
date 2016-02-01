@@ -5,7 +5,9 @@ $black-background: #000000;
 $white-text: #FFFFFF;
 $border: 1px solid #000000;
 
-/************** My Style *************/
+/**********************
+******* General *******
+***********************/
 body {
   font-family: arial, sans-serif;
 }
@@ -25,6 +27,128 @@ body {
   margin: 0 auto;
 }
 
+p {
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+}
+
+
+.pagination {
+  margin: 20px 0;
+  text-align: center;
+  li {
+    display: inline;
+    padding: 10px;
+  }
+}
+
+button {
+  margin-bottom: 20px;
+}
+
+.button {
+  margin-top: 15px;
+  line-height: 1.5;
+  padding: 0 15px;
+  background-color: #FFFFFF;
+  border: $border;
+  @include border-radius(3px);
+}
+
+.button:hover,
+.button:focus {
+  background-color: $black-background;
+  color: $white-text;
+}
+
+
+/**********************
+******* Message *******
+***********************/
+.alert {
+  margin: 100px;
+}
+
+.alert h6 {
+  margin-bottom: 30px;
+}
+
+.success {
+  color: #008000;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.fail {
+  color: #ff0000;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.error {
+  color: #ff0000;
+}
+
+
+/*******************
+******* Form *******
+********************/
+.form-text {
+  margin: 30px 0;
+}
+
+input, textarea, select {
+  border: $border;
+  @include border-radius(3px);
+  outline: none;
+  padding: 0 5px;
+}
+
+select {
+  margin: 20px;
+}
+
+.btn-closed {
+  background-color: $black-background;
+  color: $white-text;
+}
+
+.file {
+  background-color: none;
+  border: none;
+  @include border-radius(0);
+  outline: none;
+  padding: 0;
+}
+
+#opened, #closed {
+  margin-left: 10px;
+}
+
+.edit-image {
+  margin-left: 148px;
+}
+
+
+/********************
+******* Table *******
+*********************/
+th, td {
+  border: 1px solid #c0c0c0;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+}
+
+
+/*********************
+******* Header *******
+**********************/
 #header {
   display: inline-block;
   margin-bottom: 30px;
@@ -36,6 +160,10 @@ h1 {
   padding-left: 30px;
 }
 
+
+/************************
+******* Main Menu *******
+*************************/
 #navigation {
   margin-top: 100px;
   li {
@@ -63,6 +191,10 @@ h1 {
   }
 }
 
+
+/*************************
+******* Home Page *******
+**************************/
 #main {
   margin: 0 auto;
   position: relative;
@@ -77,22 +209,8 @@ h1 {
   margin-bottom: 10px;
 }
 
-p {
-  font-size: 0.75rem;
-  margin-bottom: 10px;
-}
-
 .description {
   font-size: 0.95rem;
-}
-
-.pagination {
-  margin: 20px 0;
-  text-align: center;
-  li {
-    display: inline;
-    padding: 10px;
-  }
 }
 
 #loader {
@@ -101,111 +219,24 @@ p {
   left: 50%;
 }
 
-select {
-  margin: 20px;
-  padding: 0 10px;
-}
 
-.contact {
-  margin-bottom: 40px;
-}
-
-.alert {
-  margin: 100px;
-}
-
-.success {
-  color: #008000;
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.fail {
-  color: #ff0000;
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.alert h6 {
-  margin-bottom: 30px;
-}
-
-.alert p {
-  font-size: 1.5rem;
-}
-
-.form-text {
-  margin: 30px 0;
-}
-
-input, textarea, select {
-  border: $border;
-  @include border-radius(3px);
-  outline: none;
-  padding: 0 5px;
-}
-
-select {
-  padding: 0;
-}
-
-.error {
-  color: #ff0000;
-}
-
-.button {
-  margin-top: 15px;
-  line-height: 1.5;
-  padding: 0 15px;
-  background-color: #FFFFFF;
-  border: $border;
-  @include border-radius(3px);
-}
-
-.button:hover,
-.button:focus {
-  background-color: $black-background;
-  color: $white-text;
-}
-
-
-.btn-closed {
-  background-color: $black-background;
-  color: $white-text;
-}
-
-button {
-  margin-bottom: 20px;
-}
-
-th, td {
-  border: 1px solid #c0c0c0;
-  padding: 10px;
-  text-align: center;
-}
-
-th {
+/*******************************
+******* The best sellers *******
+********************************/
+.best {
+  margin-top: 120px;
   font-weight: bold;
 }
 
-.file {
-  background-color: none;
-  border: none;
-  @include border-radius(0);
-  outline: none;
-  padding: 0;
+.best-prod {
+  margin-top: 20px;
+  width: 25%
 }
 
-#opened, #closed {
-  margin-left: 10px;
-}
 
-.edit-image {
-  margin-left: 148px;
-}
-
+/************************
+******* Cart Page *******
+*************************/
 .cart {
   margin-bottom: 20px;
 }
@@ -257,6 +288,23 @@ th {
   margin-left: 30px;
 }
 
+
+/****************************
+******* Register Page *******
+*****************************/
+.register {
+  display: inline-block;
+  position: relative;
+  left: 105px;
+  bottom: 41px;
+}
+
+
+
+
+/***************************
+******* Account Page *******
+****************************/
 .area {
   h5 {
     margin-bottom: 20px;
@@ -270,12 +318,10 @@ th {
   }
 }
 
-.best {
-  margin-top: 120px;
-  font-weight: bold;
-}
 
-.best-prod {
-  margin-top: 20px;
-  width: 25%
+/***************************
+******* Contact Page *******
+****************************/
+.contact {
+  margin-bottom: 40px;
 }

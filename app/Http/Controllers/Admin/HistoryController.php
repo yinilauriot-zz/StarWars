@@ -9,12 +9,14 @@ use App\Http\Controllers\Controller;
 
 class HistoryController extends Controller
 {
+    /**
+     * Display the order histories
+     */
     public function index()
     {
         $histories = History::with('product', 'customer')->orderBy('command_at', 'desc')->paginate(20);
 
         $title = "History";
-
         return view('admin.history', compact('histories', 'title'));
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Auth;
 use Mail;
 use View;
 use App\Tag;
+use App\User;
 use App\History;
 use App\Product;
 use App\Category;
@@ -24,28 +24,26 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        View::composer('partials.nav', function($view) // composer(): méthode de l'objet View; injecter des données dans un template
+        View::composer('partials.nav', function($view)
         {
-            $categories = Category::lists('title', 'id');  // retourner une collection qui contient un tableau avec id et title
-            //dd($categories);
-
-            $view->with(compact('categories'));  // with(): injecter des catégories dans $view
+            $categories = Category::lists('title', 'id');
+            $view->with(compact('categories'));
         });
     }
 
+    /**
+     * Display a listing of products under infinite scroll with pagination loading
+     *
+     * @param Request $request
+     */
     public function index(Request $request)
     {
-        //$products = Product::paginate(5);
-
-        //                         trois noms de relation dans Product.php
         $products = Product::with('tags', 'category', 'picture')
                              ->online()
                              ->orderBy('published_at', 'desc')
                              ->paginate($this->paginate);
 
         $lastPage = $products->lastPage();
-
-
 
         $title = "Welcome Home Page";
 
@@ -55,10 +53,16 @@ class FrontController extends Controller
             ]);
         }
 
-        return view('front.index', compact('products', 'lastPage', 'title'));  // compact('products'): créer un tableau associatif à partir de la variable $products(ligne 15), égaler à ['products' => $products]
+        return view('front.index', compact('products', 'lastPage', 'title'));
     }
 
-    public function showProductByCategory($id, $slug='')    // $slug='' => optionnel
+    /**
+     * Display a listing of products by each category
+     *
+     * @param $id
+     * @param string $slug
+     */
+    public function showProductByCategory($id, $slug='')
     {
         $category = Category::findOrFail($id);
         $products = $category->products()->with('tags', 'picture')->paginate($this->paginate);;
@@ -67,6 +71,12 @@ class FrontController extends Controller
         return view('front.category', compact('products', 'title'));
     }
 
+    /**
+     * Display a listing of products by each tag
+     *
+     * @param $id
+     * @param string $slug
+     */
     public function showProductByTag($id, $slug='')
     {
         $tag = Tag::findOrFail($id);
@@ -76,91 +86,88 @@ class FrontController extends Controller
         return view('front.tag', compact('products', 'tag', 'title'));
     }
 
+    /**
+     * Display the details and order form of a product
+     *
+     * @param $id
+     * @param string $slug
+     */
     public function showProduct($id, $slug='')
     {
-        /*try {
-
-            $product = Product::findOrFail($id);
-
-        } catch (\Exception $e) {
-
-            //dd($e->getMessage());  // dd: var_dump customisé + die
-
-            return view('front.noProduct');
-        }*/
-
         $bests = Product::orderBy('score', 'desc')->orderBy('price', 'desc')->take(4)->get();
-        //dd($bests);
-
-        $product = Product::findOrFail($id);  // fondOrFail(): si on met un id qui n'existe pas(ex: 1000), on aura la page 404
+        $product = Product::findOrFail($id);
 
         $title = "Product {$product->name}";
         return view('front.prod', compact('product', 'bests', 'title', 'customer_id'));
     }
 
+    /**
+     * Display the contact form
+     */
     public function showContact()
     {
         $title = "Contact";
         return view('front.contact', compact('title'));
     }
 
+    /**
+     * Send the message to administrator
+     * 
+     * @param  Request $request
+     */
     public function storeContact(Request $request)
     {
-        /*var_dump($_POST);
-        dd($request->all());*/
-
-        // $request->all(): toutes les données du formulaire
-        /*$validator = Validator::make($request->all(), [
-            'email' => 'required|email',  // 'field du formulaire' => 'champ_obligatoire|syntaxe d'email'
-            'content' => 'required|max:200'
-        ]);*/
-
-        //if ($validator->fails())  return back()->withInput()->withErrors($validator);  // withInput(): remettre le texte dans le champ; withErrors(): afficher les erreurs
-
-        $this->validate($request, [             // $this: FrontController
+        $this->validate($request, [
             'email' => 'required|email',
             'content' => 'required|max:255'
         ]);
 
-        // récupérer le message saisi par le client
         $content = $request->input('content');
-        //                                    content: c'est $content qui est dans emails\contact.blade.php
+ 
         Mail::send('emails.contact', compact('content'), function($m) use($request){
-            $m->from($request->input('email'), 'Client');     // $request->input('email'): récupérer l'email saisi par le client
-            $m->to(env('EMAIL_TECH'), 'admin')->subject('Contact e-boutique');  // Il envoie un mail à EMAIL_TECH que en prod non en dev
+            $m->from($request->input('email'), 'Client'); 
+            $m->to(env('EMAIL_TECH'), 'admin')->subject('Contact e-boutique'); 
         });
 
-        // on peut faire aussi return redirect('contact')->with(); back() égale à redirect('contact')
-        // with(): Laravel met tous ce qui sont dans with() dans l'objet Session, donc tous qui sont dans with() sont les variables de la session
         return back()->with([
             'message' => trans('app.contactSuccess'),
-            'alert'   => 'success'      // css pour les différentes alertes de nos messages
+            'alert'   => 'success'
         ]);
-        // Laravel fait supprimer automatiquement les variables de la session une fois qu'on quitte ou rafraîchir la page contact
-
-        // méthode with sur la redirection est équivalent à, en PHP natif:
-        //session_start();
-        //$_SESSION['laravel']['message'] = trans('app.contactSuccess');
-        //$_SESSION['laravel']['alert'] = 'success';
     }
 
+    /**
+     * Display the legal mentions
+     */
     public function mentions(){
         $title = "Mentions";
         return view('front.mention', compact('title'));
     }
 
+    /**
+     * Display the customer details and his order histories
+     */
     public function account()
     {
         $user_id = Auth::user()->id;
         $user = User::find($user_id);
         $customer = $user->customer;
-//        $histories = $customer->histories->paginate($this->paginate);
-        $histories = History::where('customer_id', $customer->id)->orderBy('command_id', 'desc')->paginate(10);
 
-        $title = "My account";
-        return view('front.account', compact('user', 'customer', 'histories', 'title'));
+        if($customer == null) {
+            $title = "My account";
+            return view('front.account', compact('user', 'title'));
+        } else {
+            $histories = History::where('customer_id', $customer->id)->orderBy('command_id', 'desc')->paginate(10);
+
+            $title = "My account";
+            return view('front.account', compact('user', 'customer', 'histories', 'title'));
+        }
     }
 
+    /**
+     * Save the order of each product in session
+     * 
+     * @param  Request $request
+     */
     public function storeCart(Request $request)
     {
         if(Session::has('cart')) {
@@ -172,10 +179,8 @@ class FrontController extends Controller
         $product_id = $request->input('product_id');
         $quantity = $request->input('quantity');
         $cart[$product_id] = $quantity;
-        //dd($cart);
 
         Session::put('cart', $cart);
-        //dd(Session::get('cart');
 
         return redirect('/')->with([
             'message' => trans('app.commandSuccess'),
@@ -183,6 +188,9 @@ class FrontController extends Controller
         ]);
     }
 
+    /**
+     * Display a listing of orders by customer
+     */
     public function showCart()
     {
         $carts = $this->productCart();
@@ -192,14 +200,43 @@ class FrontController extends Controller
         return view('front.cart', compact('carts', 'total', 'title'));
     }
 
+    /*
+     * Update the quantity of each order in session
+     */
+    public function updateQuantity(Request $request)
+    {
+        $product_id = $request->product_id;
+        $quantity = $request->quantity;
+
+        if(Session::has('cart')) {
+            $cart = Session::get('cart');
+            $product = Product::find($product_id);
+            $price = $product->price*$quantity;
+
+            $cart[$product_id] = $quantity;
+            Session::put('cart', $cart);
+        }
+
+        $total = $this->totalPrice();
+
+        return response()->json([
+            'product_id' => $product_id,
+            'price'      => $price,
+            'total'      => $total,
+        ]);
+    }
+
+    /**
+     * Remove a product from session
+     * 
+     * @param  int  $id
+     */
     public function removeCart($id)
     {
         if(Session::has('cart')) {
             $cart = Session::get('cart');
-            //dd($cart);
             unset($cart[$id]);
             Session::put('cart', $cart);
-            //dd($cart);
         }
 
         if(!empty($cart)) {
@@ -216,6 +253,9 @@ class FrontController extends Controller
         }
     }
 
+    /**
+     * Confirm the orders in session
+     */
     public function validateCart()
     {
         $carts = $this->productCart();
@@ -225,90 +265,61 @@ class FrontController extends Controller
         return view('front.confirm', compact('carts', 'total', 'title'));
     }
 
+    /**
+     * Save the orders in storage
+     */
     public function confirmCart()
     {
-        $command_id = History::all()->max('command_id');
-        $command_id++;
-        //dd($command_id);
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+        $customer = $user->customer;
 
-        if(Session::has('cart')) {
-            $cart = Session::get('cart');
-            //dd($cart);
-            foreach($cart as $id => $quantity) {
-                $product = Product::find($id);
+        if($customer == null) {
+            return redirect('customer');
+        } else {
+            $command_id = History::all()->max('command_id');
+            $command_id++;
 
-                $command = [
-                    'command_id'     => $command_id,
-                    'product_id'     => $id,
-                    'customer_id'    => Auth::user()->id,
-                    'price'          => $product->price*$quantity,
-                    'quantity'       => (int)$quantity,
-                    'command_at'     => date('Y-m-d H:i:s'),
-                    'status'         => 'unfinalized',
-                ];
-                //dd($command);
+            if(Session::has('cart')) {
+                $cart = Session::get('cart');
+                foreach($cart as $id => $quantity) {
+                    $product = Product::find($id);
+                    $command = [
+                        'command_id'     => $command_id,
+                        'product_id'     => $id,
+                        'customer_id'    => $customer->id,
+                        'price'          => $product->price*$quantity,
+                        'quantity'       => (int)$quantity,
+                        'command_at'     => date('Y-m-d H:i:s'),
+                        'status'         => 'unfinalized',
+                    ];
 
-                History::create($command);
+                    History::create($command);
 
-                $product->score++;
-                $product->quantity-=$quantity ;
-                $product->save();
+                    $product->score++;
+                    $product->quantity-=$quantity ;
+                    $product->save();
+                }
             }
+
+            Session::forget('cart');
+
+            $customer->increment('number_command');
+
+            return redirect('/')->with([
+                'message' => trans('app.finishSuccess'),
+                'alert'   => 'success'
+            ]);            
         }
-
-        Session::forget('cart');
-
-        $customer = Customer::find(Auth::user()->id);
-        $customer->increment('number_command');
-
-        return redirect('/')->with([
-            'message' => trans('app.finishSuccess'),
-            'alert'   => 'success'
-        ]);
-
     }
 
-
-
     /*
-     * Mettre à jour les quantités et les prix dans la page pannier
-     */
-    public function updateQuantity(Request $request)
-    {
-        // récupérer les valeurs envoyées via POST par ajax
-        $product_id = $request->product_id;
-        $quantity = $request->quantity;
-
-        if(Session::has('cart')) {
-            $cart = Session::get('cart');
-
-            $product = Product::find($product_id);
-            $price = $product->price*$quantity;
-
-            $cart[$product_id] = $quantity;
-
-            Session::put('cart', $cart);
-        }
-
-        $total = $this->totalPrice();
-
-        return response()->json([
-            'product_id' => $product_id,
-//            'quantity'   => $quantity,
-            'price'      => $price,
-            'total'      => $total,
-        ]);
-    }
-
-
-    /*
-     * Récupérer les détails de chaque produit qui se trouve dans la session
+     * Retrieve the details of each product in session
      */
     private function productCart()
     {
         if(Session::has('cart')) {
             $cart = Session::get('cart');
-            //dd($cart);
             foreach($cart as $id => $quantity) {
                 $product = Product::find($id);
                 $carts[] = [
@@ -322,17 +333,13 @@ class FrontController extends Controller
                     'total_price'    => $product->price*$quantity,
                 ];
             }
-        } else {
-            $carts = [];
-        }
-        //dd($carts);
+        } else   $carts = [];
 
         return $carts;
     }
 
-
     /*
-     * Calculer le prix total du pannier
+     * Calculate the total price of orders by customer
      */
     private function totalPrice()
     {
@@ -343,10 +350,7 @@ class FrontController extends Controller
                 $product = Product::find($id);
                 $total += $product->price*$quantity;
             }
-        } else {
-            $total = 0;
-        }
-        //dd($total);
+        } else   $total = 0;
 
         return $total;
     }

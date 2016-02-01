@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 29 Janvier 2016 à 15:49
+-- Généré le :  Lun 01 Février 2016 à 01:28
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.6.15
 
@@ -63,11 +63,19 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `user_id`, `address`, `number_card`, `number_command`, `created_at`, `updated_at`) VALUES
-(1, 1, '6712 Schroeder Shore\nNew Sophie, OK 43319', '1234567890123456', 27, '2016-01-29 13:25:14', '2016-01-29 13:25:14'),
-(2, 2, '728 Rutherford Street Suite 906\nJenningsbury, WI 04055-2178', '1234567890123456', 48, '2016-01-29 14:47:22', '2016-01-29 14:47:22'),
+(1, 1, '6712 Schroeder Shore\nNew Sophie, OK 43319', '1234567890123456', 28, '2016-02-01 00:05:17', '2016-02-01 00:05:17'),
+(2, 2, '728 Rutherford Street Suite 906\nJenningsbury, WI 04055-2178', '1234567890123456', 49, '2016-01-31 11:59:11', '2016-01-31 11:59:11'),
 (3, 3, '1786 Bradtke Spur Apt. 528\nDoyleside, NM 47104-0198', '1234567890123456', 0, '2016-01-28 09:24:42', '2016-01-22 15:48:00'),
 (4, 4, '39731 Gleason Lakes Apt. 213\nSherwoodstad, MI 04351', '1234567890123456', 0, '2016-01-28 09:24:45', '2016-01-22 15:48:00'),
-(5, 5, '31986 Ernestina Lakes Apt. 801\nLake Marquise, NE 97624-1330', '1234567890123456', 7, '2016-01-28 09:24:38', '2016-01-26 11:15:41');
+(5, 5, '31986 Ernestina Lakes Apt. 801\nLake Marquise, NE 97624-1330', '1234567890123456', 7, '2016-01-28 09:24:38', '2016-01-26 11:15:41'),
+(7, 15, 'Paris France', '1234567890123456', 0, '2016-01-31 23:21:35', '2016-01-31 23:21:35'),
+(8, 8, 'Paris France', '1234567890123456', 2, '2016-01-31 23:27:23', '2016-01-31 23:27:23'),
+(11, 9, 'Paris France', '1234567890123456', 0, '2016-01-31 23:31:47', '2016-01-31 23:31:47'),
+(13, 6, 'Paris France', '1234567890123456', 1, '2016-01-31 23:48:35', '2016-01-31 23:48:35'),
+(14, 7, 'Paris France', '1234567890123456', 1, '2016-01-31 23:49:50', '2016-01-31 23:49:50'),
+(15, 16, 'Paris France', '1234567890123456', 1, '2016-01-31 23:51:13', '2016-01-31 23:51:13'),
+(16, 17, 'Paris France', '1234567890123456', 1, '2016-02-01 00:08:32', '2016-02-01 00:08:32'),
+(17, 18, 'Paris France', '1234567890123456', 1, '2016-02-01 00:25:39', '2016-02-01 00:25:39');
 
 -- --------------------------------------------------------
 
@@ -167,7 +175,18 @@ INSERT INTO `histories` (`id`, `command_id`, `product_id`, `customer_id`, `price
 (75, 49, 16, 2, '100.00', 1, '2016-01-29 14:10:47', 'unfinalized', '2016-01-29 14:10:47', '2016-01-29 14:10:47'),
 (76, 50, 16, 2, '100.00', 1, '2016-01-29 14:10:48', 'unfinalized', '2016-01-29 14:10:48', '2016-01-29 14:10:48'),
 (77, 51, 12, 2, '87.60', 2, '2016-01-29 14:47:22', 'unfinalized', '2016-01-29 14:47:22', '2016-01-29 14:47:22'),
-(78, 51, 7, 2, '105.50', 1, '2016-01-29 14:47:22', 'unfinalized', '2016-01-29 14:47:22', '2016-01-29 14:47:22');
+(78, 51, 7, 2, '105.50', 1, '2016-01-29 14:47:22', 'unfinalized', '2016-01-29 14:47:22', '2016-01-29 14:47:22'),
+(79, 52, 12, 2, '87.60', 2, '2016-01-31 11:59:11', 'unfinalized', '2016-01-31 11:59:11', '2016-01-31 11:59:11'),
+(80, 52, 1, 2, '125.80', 1, '2016-01-31 11:59:11', 'unfinalized', '2016-01-31 11:59:11', '2016-01-31 11:59:11'),
+(81, 53, 9, 8, '82.88', 1, '2016-01-31 23:26:29', 'unfinalized', '2016-01-31 23:26:29', '2016-01-31 23:26:29'),
+(82, 54, 6, 8, '65.50', 1, '2016-01-31 23:27:23', 'unfinalized', '2016-01-31 23:27:23', '2016-01-31 23:27:23'),
+(84, 55, 2, 13, '90.95', 1, '2016-01-31 23:47:04', 'unfinalized', '2016-01-31 23:47:04', '2016-01-31 23:47:04'),
+(85, 56, 2, 13, '90.95', 1, '2016-01-31 23:48:35', 'unfinalized', '2016-01-31 23:48:35', '2016-01-31 23:48:35'),
+(86, 57, 13, 14, '134.50', 1, '2016-01-31 23:49:50', 'unfinalized', '2016-01-31 23:49:50', '2016-01-31 23:49:50'),
+(87, 58, 14, 15, '74.50', 1, '2016-01-31 23:51:13', 'unfinalized', '2016-01-31 23:51:13', '2016-01-31 23:51:13'),
+(88, 59, 14, 1, '74.50', 1, '2016-02-01 00:05:17', 'unfinalized', '2016-02-01 00:05:17', '2016-02-01 00:05:17'),
+(89, 60, 6, 16, '65.50', 1, '2016-02-01 00:08:32', 'unfinalized', '2016-02-01 00:08:32', '2016-02-01 00:08:32'),
+(90, 61, 2, 17, '90.95', 1, '2016-02-01 00:25:39', 'unfinalized', '2016-02-01 00:25:39', '2016-02-01 00:25:39');
 
 -- --------------------------------------------------------
 
@@ -247,8 +266,7 @@ INSERT INTO `pictures` (`id`, `product_id`, `title`, `uri`, `size`, `type`, `cre
 (31, 1, 'Vida Schumm', 'casque_6.jpg', 32767, 'jpg', '2016-01-22 15:57:59', '2016-01-22 15:52:11'),
 (32, 2, 'Princess Aufderhar DVM', 'laser_6.jpg', 29371, 'jpg', '2016-01-22 15:58:06', '2016-01-22 15:52:26'),
 (34, 14, 'Melyna O''Connell', 'casque_8.jpg', 32767, 'jpg', '2016-01-22 16:01:10', '2016-01-22 16:01:10'),
-(37, 16, 'Foo foo', 'casque_7.jpg', 32767, 'jpg', '2016-01-25 09:41:51', '2016-01-25 09:41:51'),
-(39, 8, 'Nash Moore', 'laser_4.jpg', 31847, 'jpg', '2016-01-29 13:14:58', '2016-01-29 13:14:58');
+(37, 16, 'Foo foo', 'casque_7.jpg', 32767, 'jpg', '2016-01-25 09:41:51', '2016-01-25 09:41:51');
 
 -- --------------------------------------------------------
 
@@ -277,21 +295,20 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `score`, `abstract`, `content`, `price`, `quantity`, `status`, `published_at`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Vida Schumm', 'vida-schumm', 0, 'Neque aut dolores rerum inventore minima eligendi.', 'Est nulla eligendi et in. Et magnam eveniet harum.', '125.80', 59, 'opened', '2016-01-29 09:16:10', '2016-01-29 08:16:10', '2016-01-29 08:16:10'),
-(2, 1, 'Princess Aufderhar DVM', 'princess-aufderhar-dvm', 2, 'Aspernatur ea ea soluta qui.', 'Praesentium qui voluptas est velit. Sit qui animi odit et eveniet odit officia. Eum praesentium saepe in. Eveniet vero voluptatem voluptatem mollitia ut suscipit.', '90.95', 98, 'opened', '2016-01-29 09:19:11', '2016-01-29 13:25:14', '2016-01-29 13:25:14'),
+(1, 2, 'Vida Schumm', 'vida-schumm', 1, 'Neque aut dolores rerum inventore minima eligendi.', 'Est nulla eligendi et in. Et magnam eveniet harum.', '125.80', 58, 'opened', '2016-01-29 09:16:10', '2016-01-31 11:59:11', '2016-01-31 11:59:11'),
+(2, 1, 'Princess Aufderhar DVM', 'princess-aufderhar-dvm', 5, 'Aspernatur ea ea soluta qui.', 'Praesentium qui voluptas est velit. Sit qui animi odit et eveniet odit officia. Eum praesentium saepe in. Eveniet vero voluptatem voluptatem mollitia ut suscipit.', '90.95', 95, 'opened', '2016-01-29 09:19:11', '2016-02-01 00:25:39', '2016-02-01 00:25:39'),
 (3, 2, 'Otilia Prohaska', 'otilia-prohaska', 2, 'Qui est et voluptatem omnis. Placeat inventore esse similique omnis consequatur aut.', 'Assumenda vero eum iure. Corrupti cupiditate omnis est dolore omnis dignissimos. Est autem accusantium et. Ea aut earum saepe voluptas earum ipsa rerum.', '79.90', 73, 'opened', '2016-01-29 09:15:27', '2016-01-29 13:27:16', '2016-01-29 13:27:16'),
 (4, 1, 'Dr. Jaron Gerlach', 'dr-jaron-gerlach', 3, 'Aliquam error esse consequatur ut optio inventore. Saepe repudiandae laboriosam ea impedit quasi neque.', 'Architecto nobis architecto quod voluptatem nostrum incidunt labore. Debitis autem reiciendis autem voluptatem officia voluptatem ducimus. Qui id provident saepe aut.', '24.50', 76, 'opened', '2016-01-29 09:17:32', '2016-01-29 14:06:39', '2016-01-29 14:06:39'),
 (5, 2, 'Teresa Lindgren', 'teresa-lindgren', 2, 'Harum ducimus dolor quisquam qui quasi. Earum eum ipsam alias est totam earum. Sed non cumque illum quia qui assumenda cumque.', 'Voluptas enim at suscipit enim. Sequi accusamus nisi sequi qui perspiciatis. Et accusamus recusandae sed impedit saepe quidem officiis. Ut repellendus perferendis commodi necessitatibus ratione nobis omnis.', '89.90', 64, 'opened', '2016-01-29 09:17:16', '2016-01-29 13:33:24', '2016-01-29 13:33:24'),
-(6, 1, 'Augustus Upton', 'augustus-upton', 6, 'Et architecto expedita non id dignissimos maiores dolorem. Omnis voluptatum eos et beatae consequatur animi.', 'Occaecati suscipit qui alias dignissimos labore tempore. Voluptatem praesentium facere mollitia culpa. Est voluptatem aliquid voluptatem nam.', '65.50', 102, 'opened', '2016-01-29 09:18:53', '2016-01-29 13:36:16', '2016-01-29 13:36:16'),
+(6, 1, 'Augustus Upton', 'augustus-upton', 8, 'Et architecto expedita non id dignissimos maiores dolorem. Omnis voluptatum eos et beatae consequatur animi.', 'Occaecati suscipit qui alias dignissimos labore tempore. Voluptatem praesentium facere mollitia culpa. Est voluptatem aliquid voluptatem nam.', '65.50', 100, 'opened', '2016-01-29 09:18:53', '2016-02-01 00:08:32', '2016-02-01 00:08:32'),
 (7, 2, 'Mortimer Gislason DVM', 'mortimer-gislason-dvm', 4, 'Temporibus ipsum illo rerum laudantium amet. Saepe enim libero exercitationem molestiae aut eveniet maxime.', 'Accusantium et veritatis sit eveniet fuga expedita. Quia cum magnam necessitatibus. Id nostrum et est autem esse facilis aut.', '105.50', 130, 'opened', '2016-01-29 09:19:47', '2016-01-29 14:47:22', '2016-01-29 14:47:22'),
-(8, 1, 'Nash Moore', 'nash-moore', 0, 'Possimus quisquam voluptatem ut deserunt voluptates autem ipsa.', 'Repudiandae mollitia eius velit odio ut dolor blanditiis quia. Voluptatem necessitatibus facilis dolores quia voluptas tempora. Dolor consectetur et sit quasi porro quaerat inventore.', '109.90', 0, 'opened', '2016-01-29 14:14:58', '2016-01-29 13:14:58', '2016-01-29 13:14:58'),
-(9, 2, 'Idell Gerlach', 'idell-gerlach', 0, 'Sunt nemo perspiciatis expedita distinctio. Earum doloribus veritatis iusto et sapiente eveniet.', 'Ut rerum hic dolores asperiores alias consequuntur necessitatibus. Quibusdam autem veniam et. Labore enim dignissimos facere saepe. Praesentium ullam dignissimos voluptas voluptatem.', '82.88', 53, 'opened', '2016-01-29 09:19:22', '2016-01-29 08:19:22', '2016-01-29 08:19:22'),
+(9, 2, 'Idell Gerlach', 'idell-gerlach', 1, 'Sunt nemo perspiciatis expedita distinctio. Earum doloribus veritatis iusto et sapiente eveniet.', 'Ut rerum hic dolores asperiores alias consequuntur necessitatibus. Quibusdam autem veniam et. Labore enim dignissimos facere saepe. Praesentium ullam dignissimos voluptas voluptatem.', '82.88', 52, 'opened', '2016-01-29 09:19:22', '2016-01-31 23:26:30', '2016-01-31 23:26:30'),
 (10, 1, 'Victor Doyle', 'victor-doyle', 3, 'Rerum a magnam tempore aut. Et ullam ipsum eum rerum voluptatum ut architecto.', 'Consequatur ea voluptatem eum. Blanditiis enim veniam ut quam sed est magnam. Corrupti rem vitae quia adipisci. Nulla accusantium dolorem numquam ex. Sit est iste id dignissimos.', '28.84', 58, 'opened', '2016-01-29 09:18:36', '2016-01-29 14:03:52', '2016-01-29 14:03:52'),
 (11, 2, 'Lelia Graham II', 'lelia-graham-ii', 0, 'Debitis sunt recusandae dicta dolor. Consequatur temporibus ad magni.', 'Voluptas sed alias tenetur beatae a quos. Praesentium et nihil eligendi ut non.', '119.90', 42, 'opened', '2016-01-29 09:15:43', '2016-01-29 08:15:43', '2016-01-29 08:15:43'),
-(12, 1, 'Amelie Kirlin', 'amelie-kirlin', 2, 'Eos fuga magnam perferendis ut tenetur. Magni incidunt excepturi qui molestias id corporis corporis dolorum. Tempore exercitationem amet et accusantium culpa.', 'Sequi aperiam cupiditate consectetur modi facilis dolores. Cum corrupti ut fugiat et et ab quis. Et laudantium facere quo voluptatem doloremque officiis. Alias quibusdam nesciunt consequatur quae facilis minus.', '43.80', 90, 'opened', '2016-01-29 09:17:53', '2016-01-29 14:47:22', '2016-01-29 14:47:22'),
-(13, 2, 'Claudie Kulas', 'claudie-kulas', 2, 'Adipisci enim magnam sed assumenda dolor est harum. Dolor delectus architecto odio reiciendis iure ad voluptatem quaerat.', 'Amet sunt dicta nulla velit. Similique blanditiis vero enim voluptas aut nemo. Voluptates veniam fugiat eum aut molestiae quis quis.', '134.50', 48, 'opened', '2016-01-29 09:16:59', '2016-01-29 08:16:59', '2016-01-29 08:16:59'),
-(14, 2, 'Melyna O''Connell', 'melyna-oconnell', 0, 'Eos eum voluptatem consequuntur aut. Vel officiis debitis vitae cum et.', 'Qui eligendi atque soluta neque. Numquam ut est esse fugiat officiis libero eaque. Quo eos temporibus alias iste. Quibusdam at aperiam asperiores reiciendis occaecati consectetur.', '74.50', 120, 'opened', '2016-01-29 09:16:29', '2016-01-29 08:16:29', '2016-01-29 08:16:29'),
-(15, 2, 'Annie Cronin', 'annie-cronin', 0, 'Fugiat voluptate qui sunt quo animi ipsam.', 'Omnis voluptatum nobis officia. Ut iure voluptatibus voluptate praesentium explicabo dolorem omnis. Voluptatibus qui laborum vel architecto placeat.', '120.90', 60, 'opened', '2016-01-29 09:16:44', '2016-01-29 08:16:44', '2016-01-29 08:16:44'),
+(12, 1, 'Amelie Kirlin', 'amelie-kirlin', 3, 'Eos fuga magnam perferendis ut tenetur. Magni incidunt excepturi qui molestias id corporis corporis dolorum. Tempore exercitationem amet et accusantium culpa.', 'Sequi aperiam cupiditate consectetur modi facilis dolores. Cum corrupti ut fugiat et et ab quis. Et laudantium facere quo voluptatem doloremque officiis. Alias quibusdam nesciunt consequatur quae facilis minus.', '43.80', 88, 'opened', '2016-01-29 09:17:53', '2016-01-31 11:59:11', '2016-01-31 11:59:11'),
+(13, 2, 'Claudie Kulas', 'claudie-kulas', 3, 'Adipisci enim magnam sed assumenda dolor est harum. Dolor delectus architecto odio reiciendis iure ad voluptatem quaerat.', 'Amet sunt dicta nulla velit. Similique blanditiis vero enim voluptas aut nemo. Voluptates veniam fugiat eum aut molestiae quis quis.', '134.50', 47, 'opened', '2016-01-29 09:16:59', '2016-01-31 23:49:50', '2016-01-31 23:49:50'),
+(14, 2, 'Melyna O''Connell', 'melyna-oconnell', 2, 'Eos eum voluptatem consequuntur aut. Vel officiis debitis vitae cum et.', 'Qui eligendi atque soluta neque. Numquam ut est esse fugiat officiis libero eaque. Quo eos temporibus alias iste. Quibusdam at aperiam asperiores reiciendis occaecati consectetur.', '74.50', 118, 'opened', '2016-01-29 09:16:29', '2016-02-01 00:05:17', '2016-02-01 00:05:17'),
+(15, 2, 'Annie Cronin', 'annie-cronin', 0, 'Fugiat voluptate qui sunt quo animi ipsam.', 'Omnis voluptatum nobis officia. Ut iure voluptatibus voluptate praesentium explicabo dolorem omnis. Voluptatibus qui laborum vel architecto placeat.', '120.90', 60, 'opened', '2016-02-01 01:03:57', '2016-02-01 00:03:57', '2016-02-01 00:03:57'),
 (16, 2, 'Foo foo', 'foo-foo', 19, 'foo foo', 'foo foo', '100.00', 111, 'opened', '2016-01-28 12:42:24', '2016-01-29 14:10:48', '2016-01-29 14:10:48');
 
 -- --------------------------------------------------------
@@ -332,11 +349,6 @@ INSERT INTO `product_tag` (`product_id`, `tag_id`) VALUES
 (7, 6),
 (7, 11),
 (7, 14),
-(8, 1),
-(8, 2),
-(8, 5),
-(8, 12),
-(8, 15),
 (9, 5),
 (9, 7),
 (9, 9),
@@ -416,11 +428,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'yini', 'yini@yini.fr', '$2y$10$4QHiAdC9LUkvOljq2rS/BeEHN9uqrHO1.NwFSeCYKcPJ00ftp32by', 'administrator', 'CLINrVR1rYZfRibuCkCKNkzM1dE5j28rU9vrBy0e8ijkuSXbHrDD67eifUvS', '2016-01-29 13:26:50', '2016-01-29 13:26:50'),
-(2, 'tony', 'tony@tony.fr', '$2y$10$8VKj3t5k99aP6RFLg1bgX.5rPLKaGFKelpnAGE4e2PJgxsM9RqyDy', 'visitor', 'L4rBinVH17b2DlQ2EnRgEPztunBg3L0l90CTY9DyVnUmKAr1jdc5JO9nnwaw', '2016-01-29 13:32:11', '2016-01-29 13:32:11'),
+(1, 'yini', 'yini@yini.fr', '$2y$10$4QHiAdC9LUkvOljq2rS/BeEHN9uqrHO1.NwFSeCYKcPJ00ftp32by', 'administrator', 'reNqJKqZEP4wcCO9CxYmKYaisFXSjvDzz0UZWU61w2Ow4LcxYBuYP2Ek2SLX', '2016-02-01 00:24:55', '2016-02-01 00:24:55'),
+(2, 'tony', 'tony@tony.fr', '$2y$10$8VKj3t5k99aP6RFLg1bgX.5rPLKaGFKelpnAGE4e2PJgxsM9RqyDy', 'visitor', 'sjBiBKwGtv6AD9WP75P2pcSzUtcsTbS1b6QnejUKrGaNxSPC9owZTwaepLLk', '2016-01-31 11:59:39', '2016-01-31 11:59:39'),
 (3, 'roman', 'roman@roman.fr', '$2y$10$/oW6iXzJgkad0a8uoCL04ODrSno5bUQk65cp5gY9O9NvrJTEdD11O', 'visitor', NULL, '2016-01-22 15:47:59', '0000-00-00 00:00:00'),
 (4, 'antoine', 'antoine@antoine.fr', '$2y$10$TwZtcvwDxw9OU.2wEZpYxOqfAY0QsGTjVSpGrvGxzXTShsMCCdatu', 'visitor', NULL, '2016-01-22 15:47:59', '0000-00-00 00:00:00'),
-(5, 'anna', 'anna@anna.fr', '$2y$10$VDbS2bpi9ot.8qFRHah65.M3FF.02QGGVbxgTlFvzo22aJ0nOb2ti', 'editor', 'dbeG13Q3SUzZAq1N45TzDTA3vQohbw0Md4GBZOnKsiirC02C5SlYgWQXrs8c', '2016-01-29 11:58:43', '2016-01-29 11:58:43');
+(5, 'anna', 'anna@anna.fr', '$2y$10$VDbS2bpi9ot.8qFRHah65.M3FF.02QGGVbxgTlFvzo22aJ0nOb2ti', 'editor', 'dbeG13Q3SUzZAq1N45TzDTA3vQohbw0Md4GBZOnKsiirC02C5SlYgWQXrs8c', '2016-01-29 11:58:43', '2016-01-29 11:58:43'),
+(6, 'tom', 'tom@tom.fr', '$2y$10$p1b2bgS55.BvmgNlbIvtY.9MnYuMv3/VTx3dtOSTxJyym.A1kt4A6', 'visitor', 'FMj6KSHbbqaG2VVrvUyB5UZQoj9YQbnOsm938FscP1maL7XzvStE9VXqS2Hn', '2016-01-31 23:48:41', '2016-01-31 23:48:41'),
+(7, 'mary', 'mary@mary.fr', '$2y$10$AyMcgHAegp5wr2kltlF8feMGrTGSX2h4xDLJaFYIaRW2Jl9mDS8ty', 'visitor', '0vqo2qncVWbVYO8xHjyAIb1HJ763BweEW2gbux45MgdMFoXxwWhgfv8PxFpC', '2016-01-31 23:50:16', '2016-01-31 23:50:16'),
+(8, 'lea', 'lea@lea.fr', '$2y$10$3N.ZMcTmjL6puZe1I8n87.WHj5qiAs0GtPwxirbi1c4LIgVUUhZyq', 'visitor', '9mJpkxd2C911QFyTpFAi48pbNruLrpH1lITo1HFKU30FHWWKrEa2UW8v87k9', '2016-01-31 23:27:32', '2016-01-31 23:27:32'),
+(9, 'julie', 'julie@julie.fr', '$2y$10$lAXtQ805QpSfxrjI.tYC.uZcYqm4rRwo5zN0iENnRBWHy.QnByyjK', 'visitor', '8RFVRyqkvbotYBMbuxsWoYyPIlWbiSlYCX1HPHLgKItj7Mxo5rsePhf7MdrS', '2016-01-31 23:33:00', '2016-01-31 23:33:00'),
+(10, 'theo', 'theo@theo.fr', '$2y$10$Uw4cSzjndFE43kkrHT5FEe4VrCisLLfN2Yne23ZOBeHE8gM7zlvZO', 'visitor', NULL, '2016-01-31 21:51:42', '2016-01-31 21:51:42'),
+(15, 'ben', 'ben@ben.fr', '$2y$10$bKzwamFZqd/wAupRJkLFC.pLQfctIgVrM3o3zCTF31NzcvLasw1dC', 'visitor', 'Uv6Thqa4YMvaOWsqoJkh1pxxl6lJyPHQ0vXboVnIQ8pAVY91cke3tPakjdeM', '2016-01-31 23:24:01', '2016-01-31 23:24:01'),
+(16, 'jojo', 'jojo@jojo.fr', '$2y$10$6LjsudI7Vhl510HWXAI7ROKzjnHBbpSHrZ0yjwj.mxGcV.exeAOoO', 'visitor', '0R2kRuXHTaVZ0LgQ5sbnKvGvaHglBguIbFTQGg9ygxhh3edp4UyBsDQlXpnR', '2016-02-01 00:02:00', '2016-02-01 00:02:00'),
+(17, 'elle', 'elle@elle.fr', '$2y$10$ZY06oAP.t2An4kCf3dEMnuT4OWGN3YMfJAB7nNzG0qMpIX2oB7B7a', 'visitor', 'RSYZmCItqVxrncNTx1CcJOtMAGvSRrvJhXSu6vT1UHyqZrHlps3MUEgNMsx6', '2016-02-01 00:08:40', '2016-02-01 00:08:40'),
+(18, 'ava', 'ava@ava.fr', '$2y$10$VDHBQwiYyGX4Ol3M8VuCZOzthG0hfHWpzwdNwIsEZrN7Lt.DAPJdq', 'visitor', 'wTWNWCy0tBx3UxYgDWNuMIqABTWtyYKl4SGArmREPcRtRN7iMFc0SC5KAyEs', '2016-02-01 00:22:02', '2016-02-01 00:22:02');
 
 --
 -- Index pour les tables exportées
@@ -501,12 +522,12 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT pour la table `histories`
 --
 ALTER TABLE `histories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT pour la table `pictures`
 --
@@ -516,7 +537,7 @@ ALTER TABLE `pictures`
 -- AUTO_INCREMENT pour la table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `tags`
 --
@@ -526,7 +547,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Contraintes pour les tables exportées
 --

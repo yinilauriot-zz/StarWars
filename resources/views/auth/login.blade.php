@@ -3,8 +3,8 @@
 @section('content')
     @if (Session::has('message'))
         @include('front.partials.flash')
-    @else
-    <h6 class="h6-like contact">Login</h6>
+    @endif
+    <h5 class="h5-like">Login</h5>
     <form method="POST" action="{{url('login')}}">
         {!! csrf_field() !!}
         <div class="form-text">
@@ -25,9 +25,9 @@
             <input class="input-text" id="remember" name="remember" type="radio" value="true">
             <label class="label" for="remember">{{trans('app.remember')}}</label>
         </div>
-        <div class="form-submit">
+        <div class="form-submit inbl">
             <input class="button" type="submit" value="Login">
         </div>
     </form>
-    @endif
+    <a class="register no-underline button" href="{{url('register')}}">{{trans('app.register')}}</a>
 @stop

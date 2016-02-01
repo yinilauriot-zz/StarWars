@@ -1,12 +1,14 @@
 $(document).ready(function() {
     token = $('#token').val();
-    //console.log(token);
 
     url = "http://localhost:8000";
 
     max_page = $('#lastPage').val();
     count = 2;
 
+    /**
+     * Infinite scroll with pagination loading on Home page
+     */
     $(window).scroll(function() {
         if($('#scroll').length == 1) {
             if($(window).scrollTop() == $(document).height() - $(window).height())
@@ -34,8 +36,9 @@ $(document).ready(function() {
     });
 
 
-
-
+    /**
+     * Display the price calculated on each Product page
+     */
     $('#quantity-bloc').each(function()
     {
         $(this).change(function()
@@ -49,8 +52,9 @@ $(document).ready(function() {
     });
 
 
-
-
+    /**
+     * Update the quantity and total price on Cart page
+     */
     $('.quantity').each(function()
     {
         $(this).change(function()
@@ -59,7 +63,6 @@ $(document).ready(function() {
             quantity = $(this).val();
 
             var data = 'product_id='+product_id+'&quantity='+quantity;
-            //console.log(data);
 
             $.ajax({
                  method: 'POST',
@@ -69,9 +72,8 @@ $(document).ready(function() {
                  data: data,
                  success: function(json)
                  {
-                    //console.log(json['total']);
-                     $('.total_price'+product_id).text(json.price+' €');
-                     $('#total').text(json.total+' €');
+                    $('.total_price'+product_id).text(json.price+' €');
+                    $('#total').text(json.total+' €');
                  }
              });
         });

@@ -9,7 +9,7 @@
 <body>
     <div class="wrapper">
         <header id="header" role="banner" class="line txtcenter">
-            <h1 class="h1-like fl"><img src="http://localhost:8000/assets/img/logo.jpg" alt="Star Wars Logo"></h1>
+            <h1 class="h1-like fl"><img src="assets/img/logo.jpg" alt="Star Wars Logo"></h1>
             <nav id="navigation" role="navigation" class="wrapper">
                 <ul>
                     <li class="inbl"><a class="pas no-underline {{Request::is('/') ? 'current' : ''}}" href="{{url('/')}}">{{trans('app.public')}}</a></li>

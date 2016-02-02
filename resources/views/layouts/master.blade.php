@@ -10,7 +10,7 @@
     </head>
     <body>
         <header id="header" role="banner" class="line txtcenter clearfix">
-            <h1 class="h1-like fl"><img src="assets/img/logo.jpg" alt="Star Wars Logo"></h1>
+            <h1 class="h1-like fl"><img src="{{url('assets/img/logo.jpg')}}" alt="Star Wars Logo"></h1>
             @include('partials.nav')
         </header>
 
